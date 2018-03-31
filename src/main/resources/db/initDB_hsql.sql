@@ -1,3 +1,4 @@
+
 DROP TABLE user_roles IF EXISTS;
 DROP TABLE meals IF EXISTS;
 DROP TABLE users IF EXISTS;
