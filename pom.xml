@@ -16,6 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+        <tomcat.version>8.5.29</tomcat.version>
         <spring.version>5.0.4.RELEASE</spring.version>
 
         <!-- Logging -->
