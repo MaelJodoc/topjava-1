@@ -15,8 +15,12 @@ public class DataJpaMealRepositoryImpl implements MealRepository {
 
     private static final Sort ORDER_DESC_DATE_TIME = new Sort(Sort.Direction.DESC, "dateTime");
 
+    private final CrudMealRepository crudRepository;
+
     @Autowired
-    private CrudMealRepository crudRepository;
+    public DataJpaMealRepositoryImpl(CrudMealRepository crudRepository) {
+        this.crudRepository = crudRepository;
+    }
 
     @Override
     public Meal save(Meal meal, int userId) {
@@ -26,8 +30,7 @@ public class DataJpaMealRepositoryImpl implements MealRepository {
         if (meal.isNew()) return crudRepository.save(meal);
         else {
             Meal original = get(meal.getId(), userId);
-            if (original == null) return null;
-            if (original.getUser().getId() != userId) return null;
+            if (original == null || original.getUser().getId() != userId) return null;
             return crudRepository.save(meal);
         }
     }
