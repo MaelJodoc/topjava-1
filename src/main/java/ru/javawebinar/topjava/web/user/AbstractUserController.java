@@ -14,8 +14,12 @@ import static ru.javawebinar.topjava.util.ValidationUtil.checkNew;
 public abstract class AbstractUserController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
+    private final UserService service;
+
     @Autowired
-    private UserService service;
+    public AbstractUserController(UserService service) {
+        this.service = service;
+    }
 
     public List<User> getAll() {
         log.info("getAll");
